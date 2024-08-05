@@ -2,11 +2,9 @@
 import { musicLibrary } from "./songlist";
 import dataToSong from "./ultilities";
 
-function ResultPanel() {
+function ResultPanel({ handleSubmit }) {
 
     const handleDelete = null;
-
-    const handleSubmit = 1;
 
     const songArray = dataToSong(musicLibrary, handleDelete, handleSubmit);
 

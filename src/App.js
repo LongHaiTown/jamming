@@ -13,9 +13,13 @@ function App() {
 
   ])
 
-  const handleDelete = (songToRemove) => {
+  const handleAdd = (songToAdd, artistName) => {
+    const song = { artist: artistName, song: songToAdd }
+    setFavorite(prev => [...prev, song])
+  }
+  const handleDelete = (songToRemove, artistName) => {
     setFavorite((prev) => prev.filter(
-      (favorite) => favorite.song !== songToRemove
+      (favorite) => (favorite.song !== songToRemove) && (favorite.artist !== artistName)
     ));
   };
 
@@ -34,7 +38,7 @@ function App() {
       </div>
 
       <div className="main">
-        <ResultPanel />
+        <ResultPanel handleSubmit={handleAdd} />
         <PlaylistPanel favorite={favorite} handleDelete={handleDelete} />
 
 
