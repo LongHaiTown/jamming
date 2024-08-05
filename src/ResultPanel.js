@@ -2,11 +2,13 @@
 import { musicLibrary } from "./songlist";
 import dataToSong from "./ultilities";
 
-
 function ResultPanel() {
 
-    const songArray = dataToSong(musicLibrary);
+    const handleDelete = null;
 
+    const handleSubmit = 1;
+
+    const songArray = dataToSong(musicLibrary, handleDelete, handleSubmit);
 
     return (
         <div className="results">

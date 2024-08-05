@@ -1,24 +1,12 @@
-import Song from "./Song";
-import { useState } from "react"
+
 import dataToSong from "./ultilities";
 
-function PlaylistPanel({ songList }) {
-    const [favorite, setFavorite] = useState([
-
-        { artist: "The Weeknd", song: "Die for you" },
-        { artist: "Taylor Swift", song: "Love Story" }
-
-    ])
+function PlaylistPanel({ favorite, handleDelete }) {
 
 
+    const handleSubmit = null;
 
-    const handleDelete = (songToRemove) => {
-        setFavorite((prev) => prev.filter(
-            (favorite) => favorite.song !== songToRemove
-        ));
-    };
-
-    const songArray = dataToSong(favorite);
+    const songArray = dataToSong(favorite, handleDelete, handleSubmit);
 
     return (
         <div className="playlist">

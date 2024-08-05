@@ -1,32 +1,24 @@
 
 import './App.css';
-import Song from './Song';
 import ResultPanel from './ResultPanel';
 import PlaylistPanel from './PlaylistPanel';
-
+import { useState } from 'react';
 function App() {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!newTask.title) return;
-    setAllTasks((prev) => [newTask, ...prev]);
-    setNewTask({});
+
+  const [favorite, setFavorite] = useState([
+
+    { artist: "The Weeknd", song: "Die for you" },
+    { artist: "Taylor Swift", song: "Love Story" }
+
+  ])
+
+  const handleDelete = (songToRemove) => {
+    setFavorite((prev) => prev.filter(
+      (favorite) => favorite.song !== songToRemove
+    ));
   };
 
-
-
-  const musicLibrary = [
-    { artist: "Taylor Swift", song: "Love Story" },
-    { artist: "Ed Sheeran", song: "Shape of You" },
-    { artist: "Adele", song: "Hello" },
-    { artist: "The Beatles", song: "Hey Jude" }
-  ];
-
-  const songArray = []
-
-  for (const song in musicLibrary) {
-    songArray.push(<Song songName={song.song} artistName={song.artist} />)
-  }
 
   return (
     <div className="App">
@@ -42,8 +34,8 @@ function App() {
       </div>
 
       <div className="main">
-        <ResultPanel songList={musicLibrary} />
-        <PlaylistPanel />
+        <ResultPanel />
+        <PlaylistPanel favorite={favorite} handleDelete={handleDelete} />
 
 
       </div>
