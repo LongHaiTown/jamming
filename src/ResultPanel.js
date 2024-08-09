@@ -1,5 +1,5 @@
 
-import { musicLibrary } from "./songlist";
+import { musicLibrary } from "./SongList";
 import dataToSong from "./ultilities";
 
 function ResultPanel({ handleSubmit }) {
