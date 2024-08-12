@@ -68,7 +68,6 @@
   margin: 15px 40px;
   padding: 10px;
   height: 200px;
-  overflow-x: scroll;
 
 }
 
@@ -91,13 +90,30 @@
 .artistInfo ul {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+
   color: grey;
   font-size: 10px;
-  margin: 0px;
+
   font-style: italic;
   list-style-type: none;
-  padding: 0px;
+  display: inline;
 
+  padding: 0px;
+  margin: 0px;
+
+}
+
+.artistInfo p {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 2px 0;
+}
+
+.artistInfo li {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
 }
 
 .main {

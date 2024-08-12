@@ -12,6 +12,9 @@ const CLIENT_SECRET = "43bcaaed741e49b08c0f9512f2145fe7";
 function App() {
   const [accessToken, setAccessToken] = useState("")
   const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const [tracks, setTracksResult] = useState([]);
+
   const [favorite, setFavorite] = useState([
 
     { artist: "The Weeknd", song: "Die for you" },
@@ -35,7 +38,7 @@ function App() {
   async function search() {
     // Get request ID
     console.log("Searching for " + searchInput)
-    var artistParameters = {
+    var searchParameters = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -44,13 +47,33 @@ function App() {
     }
     try {
       // Fetch data from the Spotify API
-      var response = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', artistParameters)
+
+      // Get Artist IDs
+      var response = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', searchParameters)
       var data = await response.json();
-      console.log(data);
-      // Get all album from ID
-      const artistID = data.artists.items[0].id;
-      const artistname = data.artists.items[0].name;
-      alert("Your \"" + searchInput + "\"" + " is " + artistname + " with " + artistID);
+      setSearchResult(data.artists.items)
+
+      // Get name- ID of 1st artist
+      var artistID = data.artists.items[0].id;
+      var artistname = data.artists.items[0].name;
+      alert("Searching for " + artistname + "with ID " + artistID);
+
+
+      // Get top-tracks of 1st artist 
+      // var returnTracks = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/top-tracks?market=US&limit=50', searchParameters)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     console.log("Track Data")
+      //     console.log(data.items);
+      //     setTracksResult(data.items);
+      //   })
+
+      response = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/top-tracks?market=US&limit=50', searchParameters)
+      data = await response.json();
+      setTracksResult(data.tracks);
+
+
+
     } catch (error) {
       // Handle errors
       console.error('Error fetching data:', error);
@@ -74,8 +97,6 @@ function App() {
     // alert(`Submitted: ${searchInput}`); // Hiển thị dữ liệu nhập vào bằng alert
     search();
   }
-  //search
-
   return (
     <div className="App">
       <div className="title">
@@ -92,9 +113,9 @@ function App() {
           <button id="submitButton" type='submit'>Submit</button>
         </form>
       </div>
-      <ArtistResult />
+      <ArtistResult props={searchResult} />
       <div className="main">
-        <ResultPanel handleSubmit={handleAdd} />
+        <ResultPanel handleSubmit={handleAdd} props={tracks} />
         <PlaylistPanel favorite={favorite} handleDelete={handleDelete} />
       </div>
 
