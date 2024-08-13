@@ -10,7 +10,7 @@ function Song({ songName, artistName, handler }) {
                 </div>
                 <button onClick={() => handler(songName, artistName)}>x</button>
             </div>
-            <hr style={{ width: "94%", padding: "0%", margin: "0%" }} />
+            <hr style={{ width: "100%", padding: "0%", margin: "0%" }} />
         </div>
     )
 }

@@ -68,17 +68,21 @@
   margin: 15px 40px;
   padding: 10px;
   height: 200px;
-
+  flex: 0 0 200px;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
 }
 
 .artist {
   display: flex;
-  height: calc(100%- 40px);
   width: 300px;
+  margin: 0;
   border: rgb(21, 18, 82);
   border-width: 7px;
   border-style: solid;
+  flex-shrink: 0;
 }
+
 
 .artistInfo {
   display: flex;
@@ -107,13 +111,13 @@
 .artistInfo p {
   display: flex;
   justify-content: flex-start;
-  margin: 0 0 2px 0;
 }
 
 .artistInfo li {
   display: flex;
   justify-content: flex-start;
-  padding-left: 10px;
+  align-items: flex-start;
+
 }
 
 .main {
@@ -132,11 +136,13 @@
   margin: 0 20px;
   background-color: rgb(21, 18, 82);
   color: white;
+
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+
   overflow-y: scroll;
-  overflow-x: hidden;
+
+  margin: 0 20px;
   padding-bottom: 20px;
 }
 
@@ -149,26 +155,16 @@
   color: white;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
 
-.result {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-}
 
 .Song {
   align-self: flex-start;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   width: 100%;
-
-
 }
 
 .info {
@@ -185,7 +181,11 @@
   margin: 0;
   margin-top: 15px;
   margin-left: 20px;
-  font-size: 20px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-y: none;
+  text-overflow: ellipsis;
 }
 
 .info p {
@@ -203,5 +203,25 @@
   margin-right: 20px;
   width: calc(10%);
   opacity: 0.2;
+}
 
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+  /* Width of the entire scrollbar */
+
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(21, 18, 82);
+  opacity: 0.5;
+  /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  /* Roundness of the scrollbar thumb */
+  /* Padding around the scrollbar thumb */
 }

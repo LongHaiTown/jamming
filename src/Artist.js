@@ -1,8 +1,13 @@
 function Artist({ artist }) {
+
     if (artist != null)
         return (
             <div className="artist">
-                <img src={artist.images && artist.images.length > 0 ? artist.images[0].url : './logo192.png'} style={{ maxWidth: "45%" }} />
+                <img src={artist.images && artist.images.length > 0 ? artist.images[0].url : './logo192.png'}
+                    role="button"
+                    onClick="handleClick()"
+                    style={{ width: "60%" }} />
+
                 <div className="artistInfo">
                     <h1 style={{ color: "white", fontSize: "20px", marginTop: "0px", marginBottom: "2px" }}>{artist.name}</h1>
                     <ul>
