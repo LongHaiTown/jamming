@@ -13,10 +13,11 @@ const CLIENT_SECRET = "43bcaaed741e49b08c0f9512f2145fe7";
 function App() {
   const [accessToken, setAccessToken] = useState("")
   const [searchInput, setSearchInput] = useState("");
+
   const [searchResult, setSearchResult] = useState([]);
   const [tracks, setTracksResult] = useState([]);
 
-  const [favorite, setFavorite] = useState([])
+  const [favorite, setFavorite] = useState([]);
 
 
 
@@ -119,7 +120,7 @@ function App() {
       <ArtistResult props={searchResult} />
       <div className="main">
         <ResultPanel handler={handleAdd} props={tracks} />
-        <PlaylistPanel favorite={favorite} handler={handleDelete} />
+        <PlaylistPanel favorite={favorite} handler={handleDelete} setFavorite={setFavorite} />
       </div>
 
     </div >
