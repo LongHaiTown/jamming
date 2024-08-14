@@ -1,4 +1,4 @@
-<p>This web abb is written by using JavaScript (React), html and CSS </p>
+<p>This web app is written by using JavaScript (React), html and CSS </p>
 
 <h1> Spotify playlist apps (JAMMING)</h1>
 Jamming is a React-based application that allows users to search for artists on Spotify, view the top tracks of selected artists, and add favorite tracks to their personal list.
