@@ -1,6 +1,6 @@
 
 import Song from "./Song";
-import SongList from "./SongList";
+import SongList from "./songlist";
 import dataToSong from "./ultilities";
 
 function ResultPanel({ handler, props }) {
